@@ -1,0 +1,61 @@
+seed: 1337
+layers: 7
+cubes_per_layer: 7
+top_x: 4
+heads: 8
+blocks_per_cube: 3
+d_cube: 224
+d_emb: 224
+d_router: 448
+router_blocks: 3
+router_heads: 8
+dense_pre_blocks: 2
+dense_pre_heads: 8
+dense_pre_ff: 528
+dense_post_blocks: 2
+dense_post_heads: 8
+dense_post_ff: 528
+seq_len: 1024
+batch_size: 12
+parallel_cube_teach: 7
+grad_accum_steps: 4
+steps: 15000
+steps_abi: 20000
+steps_stage_b: 8000
+steps_stage_c: 25000
+
+tokenizer: auto
+tokenizer_vocab_size: 32768
+tokenizer_min_frequency: 3
+dataset_text_column: text
+clusterized_dir: FSS1_clusterized
+
+prepare_max_docs: null
+prepare_max_chunks: null
+tokenizer_train_docs: 5000000
+eval_max_chunks: 256
+activation_max_prompts: 2
+sliding_window_views: 3
+
+use_sheaf: true
+use_pc_head: true
+route_fn: sparsemax
+symbolic_prior: true
+
+gate_temp: 0.5
+gate_margin: 1.0
+hard_neg_frac: 0.75
+hard_neg_k: 3
+lambda_margin: 0.4
+stage_a_margin_adaptive: true
+label_smoothing: 0.1
+stage_a_unfreeze_final_norm: true
+lambda_l0: 0.05
+
+lr: 1.2e-4
+lr_router: 6e-5
+lr_gate: 4e-5
+lr_core: 1e-6
+lr_pc: 1e-3
+lr_l0: 1e-3
+out_dir: hive_runs_fss1_big
