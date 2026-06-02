@@ -1,0 +1,411 @@
+[run-all] kept prepared data and clusterized shards; remove them manually if you need a full rebuild
+[tokenizer] source=FSS1STR out=hive_runs_fss1str/tokenizer.json vocab=16384 min_freq=3 max_docs=1000000
+Loading dataset from disk: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 33/33 [00:00<00:00, 65.98it/s]
+[00:00:38] Pre-processing sequences       ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 0        /        0[00:00:04] Tokenize words                 ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 2796641  /  2796641
+[00:00:02] Count pairs                    ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 2796641  /  2796641
+[00:00:27] Compute merges                 ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 16171    /    16171
+[tokenizer] saved hive_runs_fss1str/tokenizer.json vocab=16384
+[run-all] prepare
+[prepare] vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[prepare] params total=21480958 abi=2121920 planner=4133774 cube=1107364 all_cubes=13288368
+Loading dataset from disk: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 33/33 [00:00<00:00, 144.02it/s]
+[prepare] 200000 documents
+[prepare] 204763 chunks
+[prepare] layer 0 sizes: [34128, 34127, 34127, 34127, 34127, 34127]
+[prepare] layer 0 cube_tokens: [34947072, 34946048, 34946048, 34946048, 34946048, 34946048]
+[prepare] layer 1 sizes: [34128, 34127, 34127, 34127, 34127, 34127]
+[prepare] layer 1 cube_tokens: [34947072, 34946048, 34946048, 34946048, 34946048, 34946048]
+[prepare] wrote clusterized cubes to FSS1STR_clusterized
+[prepare] wrote offset view offset=341 chunks=52478
+[prepare] wrote offset view offset=683 chunks=12598
+[prepare] wrote data/fss1_prep
+[run-all] pretrain ABI
+[stage0] vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stage0] step 0 loss 9.6489
+[stage0] step 700 loss 2.2570
+[stage0] step 1400 loss 1.6161
+[stage0] step 2100 loss 0.8286
+[stage0] step 2800 loss 1.7156
+[stage0] step 3500 loss 1.5646
+[stage0] step 4200 loss 1.8313
+[stage0] step 4900 loss 0.9119
+[stage0] step 5600 loss 1.0808
+[stage0] step 6300 loss 1.6499
+[stage0] saved abi.pt (dense scaffold retained)
+[stageA-par] training layer 0 after all previous layers are merged
+[run-all] stage A spawn layer=0 cube=0
+[run-all] stage A spawn layer=0 cube=1
+[run-all] stage A spawn layer=0 cube=2
+[run-all] stage A spawn layer=0 cube=3
+[run-all] stage A spawn layer=0 cube=4
+[run-all] stage A spawn layer=0 cube=5
+[stageA] layer 0 cube 1 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 0 cube 0 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 0 cube 4 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 0 cube 5 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 0 cube 2 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 0 cube 3 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[stageA] nearest clusters (hard negs): [2, 0] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [0, 2] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [2, 5] -> 68254 hard / 170635 total neg
+[stageA] nearest clusters (hard negs): [5, 2] -> 68254 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [4, 0] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [0, 5] -> 68255 hard / 170636 total neg
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=15693141 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=7.823
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=12574378 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=9.763
+[stageA] pos 34128 neg 34128 hard_neg 34128 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=16552618 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=7.416
+[stageA] step 0 task 3.4341 g+ 0.402 g- 0.379 margin 1.9062 alpha 0.707
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=20354048 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=6.031
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=12601685 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=9.742
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.000 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=14329856 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=8.567
+[stageA] step 0 task 4.0793 g+ 0.241 g- 0.234 margin 2.3594 alpha 0.707
+[stageA] step 0 task 4.1909 g+ 0.531 g- 0.508 margin 1.9062 alpha 0.707
+[stageA] step 0 task 4.6146 g+ 0.555 g- 0.543 margin 1.9688 alpha 0.707
+[stageA] step 0 task 3.1262 g+ 0.602 g- 0.633 margin 2.1250 alpha 0.707
+[stageA] step 0 task 3.1127 g+ 0.578 g- 0.594 margin 2.0781 alpha 0.707
+[stageA] step 500 task 2.9796 g+ 0.711 g- 0.180 margin 0.5703 alpha 0.735
+[stageA] step 500 task 2.3419 g+ 0.887 g- 0.126 margin 0.0198 alpha 0.727
+[stageA] step 500 task 2.0749 g+ 0.730 g- 0.264 margin 0.5938 alpha 0.731
+[stageA] step 500 task 3.7248 g+ 0.824 g- 0.194 margin 0.3145 alpha 0.734
+[stageA] step 500 task 2.0377 g+ 0.848 g- 0.028 margin 0.0840 alpha 0.720
+[stageA] step 500 task 3.0195 g+ 0.559 g- 0.144 margin 0.9570 alpha 0.730
+[stageA] step 1000 task 2.2371 g+ 0.691 g- 0.229 margin 0.5977 alpha 0.746
+[stageA] step 1000 task 3.5073 g+ 0.793 g- 0.038 margin 0.2695 alpha 0.737
+[stageA] step 1000 task 3.8415 g+ 0.629 g- 0.242 margin 0.6992 alpha 0.740
+[stageA] step 1000 task 3.3320 g+ 0.738 g- 0.226 margin 0.6250 alpha 0.747
+[stageA] step 1000 task 2.2616 g+ 0.902 g- 0.001 margin 0.0393 alpha 0.725
+[stageA] step 1000 task 1.9583 g+ 0.684 g- 0.230 margin 0.6992 alpha 0.740
+[stageA] step 1500 task 2.8147 g+ 0.770 g- 0.273 margin 0.5508 alpha 0.755
+[stageA] step 1500 task 2.9765 g+ 0.805 g- 0.121 margin 0.0117 alpha 0.746
+[stageA] step 1500 task 2.3192 g+ 0.746 g- 0.221 margin 0.3105 alpha 0.749
+[stageA] step 1500 task 3.4927 g+ 0.695 g- 0.116 margin 0.4551 alpha 0.755
+[stageA] step 1500 task 2.1928 g+ 0.930 g- 0.086 margin 0.1934 alpha 0.730
+[stageA] step 1500 task 3.6725 g+ 0.715 g- 0.344 margin 0.8125 alpha 0.749
+[stageA] step 2000 task 2.8994 g+ 0.695 g- 0.247 margin 0.5625 alpha 0.763
+[stageA] step 2000 task 2.7933 g+ 0.844 g- 0.110 margin 0.0332 alpha 0.755
+[stageA] step 2000 task 2.8707 g+ 0.750 g- 0.217 margin 0.5391 alpha 0.759
+[stageA] step 2000 task 4.6285 g+ 0.613 g- 0.258 margin 1.0078 alpha 0.763
+[stageA] step 2000 task 2.0032 g+ 0.832 g- 0.129 margin 0.3359 alpha 0.735
+[stageA] step 2000 task 2.4453 g+ 0.684 g- 0.221 margin 0.6797 alpha 0.756
+[stageA] step 2500 task 2.5130 g+ 0.762 g- 0.199 margin 0.2012 alpha 0.770
+[stageA] step 2500 task 2.5992 g+ 0.820 g- 0.064 margin 0.0669 alpha 0.765
+[stageA] step 2500 task 2.3085 g+ 0.676 g- 0.158 margin 0.3945 alpha 0.769
+[stageA] step 2500 task 4.3544 g+ 0.570 g- 0.159 margin 1.1016 alpha 0.770
+[stageA] step 2500 task 2.9007 g+ 0.879 g- 0.051 margin 0.0466 alpha 0.741
+[stageA] step 2500 task 3.5218 g+ 0.793 g- 0.164 margin 0.0383 alpha 0.764
+[stageA] step 3000 task 3.4490 g+ 0.711 g- 0.174 margin 0.5781 alpha 0.779
+[stageA] step 3000 task 2.6534 g+ 0.820 g- 0.146 margin 0.2754 alpha 0.775
+[stageA] step 3000 task 3.1216 g+ 0.746 g- 0.229 margin 0.3125 alpha 0.778
+[stageA] step 3000 task 3.5031 g+ 0.828 g- 0.164 margin 0.1152 alpha 0.777
+[stageA] step 3000 task 2.3613 g+ 0.938 g- 0.025 margin 0.0123 alpha 0.747
+[stageA] step 3000 task 2.7785 g+ 0.758 g- 0.137 margin 0.2637 alpha 0.772
+[stageA] step 3500 task 2.7605 g+ 0.746 g- 0.248 margin 0.3496 alpha 0.787
+[stageA] step 3500 task 2.5118 g+ 0.824 g- 0.070 margin 0.0082 alpha 0.785
+[stageA] step 3500 task 2.7473 g+ 0.793 g- 0.201 margin 0.0625 alpha 0.788
+[stageA] step 3500 task 2.9306 g+ 0.625 g- 0.149 margin 0.6758 alpha 0.783
+[stageA] step 3500 task 2.7385 g+ 0.914 g- 0.144 margin 0.2539 alpha 0.754
+[stageA] step 3500 task 3.0120 g+ 0.691 g- 0.285 margin 0.7891 alpha 0.780
+[stageA] step 4000 task 3.4740 g+ 0.781 g- 0.215 margin 0.3242 alpha 0.796
+[stageA] step 4000 task 2.5134 g+ 0.844 g- 0.067 margin 0.0879 alpha 0.796
+[stageA] step 4000 task 2.4238 g+ 0.605 g- 0.165 margin 0.7578 alpha 0.798
+[stageA] step 4000 task 3.2180 g+ 0.672 g- 0.143 margin 0.4512 alpha 0.791
+[stageA] step 4000 task 2.4653 g+ 0.867 g- 0.022 margin 0.0237 alpha 0.763
+[stageA] step 4000 task 2.6799 g+ 0.754 g- 0.200 margin 0.2021 alpha 0.788
+[stageA] step 4500 task 2.5306 g+ 0.754 g- 0.231 margin 0.3770 alpha 0.805
+[stageA] step 4500 task 2.1578 g+ 0.805 g- 0.065 margin 0.0021 alpha 0.806
+[stageA] step 4500 task 2.6413 g+ 0.758 g- 0.289 margin 0.3496 alpha 0.808
+[stageA] step 4500 task 3.8953 g+ 0.789 g- 0.128 margin 0.0564 alpha 0.798
+[stageA] step 4500 task 2.8280 g+ 0.895 g- 0.009 margin 0.0107 alpha 0.772
+[stageA] step 4500 task 1.9478 g+ 0.727 g- 0.237 margin 0.5391 alpha 0.796
+[stageA] saved cube (0,5) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube5.pt
+[stageA] saved cube (0,4) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube4.pt
+[stageA] saved cube (0,0) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube0.pt
+[stageA] saved cube (0,1) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube1.pt
+[stageA] saved cube (0,3) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube3.pt
+[stageA] saved cube (0,2) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer0_cube2.pt
+[stageA-par] merged cube (0,0) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (0,1) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (0,2) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (0,3) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (0,4) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (0,5) into hive_runs_fss1str/hive.pt
+[stageA-par] training layer 1 after all previous layers are merged
+[run-all] stage A spawn layer=1 cube=0
+[run-all] stage A spawn layer=1 cube=1
+[run-all] stage A spawn layer=1 cube=2
+[run-all] stage A spawn layer=1 cube=3
+[run-all] stage A spawn layer=1 cube=4
+[run-all] stage A spawn layer=1 cube=5
+[stageA] layer 1 cube 5 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 1 cube 2 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 1 cube 4 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 1 cube 0 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 1 cube 3 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[stageA] layer 1 cube 1 | vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[load] ABI+dense scaffold from hive_runs_fss1str/abi.pt
+[stageA] nearest clusters (hard negs): [5, 1] -> 68254 hard / 170635 total neg
+[stageA] nearest clusters (hard negs): [0, 1] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [1, 0] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [5, 1] -> 68254 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [0, 5] -> 68255 hard / 170636 total neg
+[stageA] nearest clusters (hard negs): [2, 5] -> 68254 hard / 170636 total neg
+[stageA] pos 34128 neg 34128 hard_neg 34128 | noise_sigma~0.833 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=14327125 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=8.568
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.834 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=17299797 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=7.096
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.832 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=20355072 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=6.031
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.835 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=12574378 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=9.763
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.833 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=14946986 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=8.213
+[stageA] pos 34127 neg 34127 hard_neg 34127 | noise_sigma~0.835 | gate_temp 0.6 margin 1.0
+[stageA] params cube=1107364 total_model=21480958
+[stageA] local_cluster_tokens=12601685 tokens_seen_total=245520000 tokens_seen_pos=122760000 tokens_seen_neg=122760000
+[stageA] tokens_per_param=221.716 local_epochs=9.742
+[stageA] step 0 task 3.2003 g+ 0.389 g- 0.377 margin 1.9531 alpha 0.500
+[stageA] step 0 task 3.5957 g+ 0.361 g- 0.348 margin 1.9531 alpha 0.500
+[stageA] step 0 task 3.8794 g+ 0.443 g- 0.391 margin 1.8125 alpha 0.500
+[stageA] step 0 task 4.0308 g+ 0.387 g- 0.279 margin 1.7969 alpha 0.500
+[stageA] step 0 task 2.4601 g+ 0.365 g- 0.408 margin 2.1875 alpha 0.500
+[stageA] step 0 task 2.9852 g+ 0.447 g- 0.455 margin 2.0312 alpha 0.500
+[stageA] step 500 task 2.7001 g+ 0.695 g- 0.262 margin 0.8086 alpha 0.525
+[stageA] step 500 task 1.9510 g+ 0.668 g- 0.344 margin 1.2578 alpha 0.534
+[stageA] step 500 task 4.6828 g+ 0.668 g- 0.145 margin 0.6836 alpha 0.530
+[stageA] step 500 task 3.2872 g+ 0.754 g- 0.068 margin 0.6172 alpha 0.520
+[stageA] step 500 task 2.9404 g+ 0.770 g- 0.307 margin 0.6328 alpha 0.534
+[stageA] step 500 task 2.6652 g+ 0.949 g- 0.035 margin 0.0206 alpha 0.515
+[stageA] step 1000 task 2.3753 g+ 0.746 g- 0.228 margin 0.4297 alpha 0.536
+[stageA] step 1000 task 2.6908 g+ 0.625 g- 0.241 margin 0.6641 alpha 0.545
+[stageA] step 1000 task 2.7273 g+ 0.711 g- 0.307 margin 1.0156 alpha 0.546
+[stageA] step 1000 task 2.5577 g+ 0.883 g- 0.114 margin 0.0557 alpha 0.531
+[stageA] step 1000 task 3.2813 g+ 0.758 g- 0.239 margin 0.3652 alpha 0.544
+[stageA] step 1000 task 2.1684 g+ 0.914 g- 0.083 margin 0.1328 alpha 0.520
+[stageA] step 1500 task 2.5882 g+ 0.652 g- 0.165 margin 0.6250 alpha 0.545
+[stageA] step 1500 task 2.3616 g+ 0.855 g- 0.336 margin 0.3496 alpha 0.555
+[stageA] step 1500 task 3.4346 g+ 0.762 g- 0.120 margin 0.0674 alpha 0.556
+[stageA] step 1500 task 2.6061 g+ 0.902 g- 0.104 margin 0.0091 alpha 0.541
+[stageA] step 1500 task 2.5335 g+ 0.812 g- 0.316 margin 0.9648 alpha 0.552
+[stageA] step 1500 task 2.4963 g+ 0.887 g- 0.138 margin 0.1592 alpha 0.524
+[stageA] step 2000 task 2.8845 g+ 0.730 g- 0.482 margin 1.1250 alpha 0.553
+[stageA] step 2000 task 3.6211 g+ 0.574 g- 0.283 margin 1.1719 alpha 0.566
+[stageA] step 2000 task 4.0964 g+ 0.703 g- 0.098 margin 0.3008 alpha 0.564
+[stageA] step 2000 task 2.8392 g+ 0.855 g- 0.077 margin 0.0864 alpha 0.551
+[stageA] step 2000 task 2.3782 g+ 0.766 g- 0.198 margin 0.3965 alpha 0.561
+[stageA] step 2000 task 2.6739 g+ 0.863 g- 0.003 margin 0.0276 alpha 0.529
+[stageA] step 2500 task 2.9970 g+ 0.633 g- 0.238 margin 0.9375 alpha 0.561
+[stageA] step 2500 task 3.1723 g+ 0.820 g- 0.198 margin 0.1250 alpha 0.574
+[stageA] step 2500 task 2.7126 g+ 0.734 g- 0.271 margin 0.6875 alpha 0.573
+[stageA] step 2500 task 2.5665 g+ 0.824 g- 0.152 margin 0.2930 alpha 0.560
+[stageA] step 2500 task 2.3193 g+ 0.656 g- 0.210 margin 0.4531 alpha 0.569
+[stageA] step 2500 task 1.8587 g+ 0.926 g- 0.110 margin 0.2695 alpha 0.534
+[stageA] step 3000 task 2.4628 g+ 0.727 g- 0.311 margin 1.0312 alpha 0.570
+[stageA] step 3000 task 2.6397 g+ 0.676 g- 0.266 margin 0.5781 alpha 0.585
+[stageA] step 3000 task 3.4580 g+ 0.793 g- 0.099 margin 0.0820 alpha 0.581
+[stageA] step 3000 task 2.0279 g+ 0.652 g- 0.072 margin 0.5469 alpha 0.570
+[stageA] step 3000 task 2.6941 g+ 0.824 g- 0.180 margin 0.0231 alpha 0.577
+[stageA] step 3000 task 2.3787 g+ 0.934 g- 0.140 margin 0.3203 alpha 0.539
+[stageA] step 3500 task 1.9693 g+ 0.777 g- 0.480 margin 1.1094 alpha 0.579
+[stageA] step 3500 task 3.0077 g+ 0.590 g- 0.303 margin 1.1094 alpha 0.595
+[stageA] step 3500 task 3.7732 g+ 0.727 g- 0.215 margin 0.5977 alpha 0.587
+[stageA] step 3500 task 2.0490 g+ 0.863 g- 0.032 margin 0.0033 alpha 0.580
+[stageA] step 3500 task 3.3024 g+ 0.746 g- 0.277 margin 0.7578 alpha 0.585
+[stageA] step 3500 task 2.2357 g+ 0.898 g- 0.011 margin 0.0029 alpha 0.545
+[stageA] step 4000 task 2.5833 g+ 0.852 g- 0.113 margin 0.0220 alpha 0.586
+[stageA] step 4000 task 2.6232 g+ 0.723 g- 0.279 margin 0.7070 alpha 0.605
+[stageA] step 4000 task 3.9164 g+ 0.797 g- 0.059 margin 0.0674 alpha 0.597
+[stageA] step 4000 task 2.4489 g+ 0.801 g- 0.026 margin 0.1943 alpha 0.590
+[stageA] step 4000 task 3.2807 g+ 0.730 g- 0.229 margin 0.5938 alpha 0.592
+[stageA] step 4000 task 1.7119 g+ 0.930 g- 0.017 margin 0.0067 alpha 0.552
+[stageA] step 4500 task 1.9698 g+ 0.766 g- 0.338 margin 0.7070 alpha 0.595
+[stageA] step 4500 task 3.9835 g+ 0.664 g- 0.273 margin 0.8477 alpha 0.615
+[stageA] step 4500 task 3.9452 g+ 0.695 g- 0.198 margin 0.6094 alpha 0.605
+[stageA] step 4500 task 2.2991 g+ 0.910 g- 0.107 margin 0.1021 alpha 0.599
+[stageA] step 4500 task 2.9219 g+ 0.699 g- 0.213 margin 0.6328 alpha 0.602
+[stageA] step 4500 task 2.4462 g+ 0.859 g- 0.023 margin 0.0178 alpha 0.559
+[stageA] saved cube (1,0) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube0.pt
+[stageA] saved cube (1,5) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube5.pt
+[stageA] saved cube (1,3) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube3.pt
+[stageA] saved cube (1,2) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube2.pt
+[stageA] saved cube (1,1) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube1.pt
+[stageA] saved cube (1,4) worker checkpoint to hive_runs_fss1str/stageA_tmp/layer1_cube4.pt
+[stageA-par] merged cube (1,0) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (1,1) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (1,2) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (1,3) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (1,4) into hive_runs_fss1str/hive.pt
+[stageA-par] merged cube (1,5) into hive_runs_fss1str/hive.pt
+[run-all] stage B
+[stageB] vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[concepts] installed cluster-centroid concept atoms in planner d_router space
+[stageB] step 0 task 3.8416 route 1.6960 bal 0.2360 cap 0.0000
+[stageB] step 400 task 3.0427 route 1.2615 bal 0.0685 cap 0.0000
+[stageB] step 800 task 3.2833 route 1.0732 bal 0.0315 cap 0.0000
+[stageB] step 1200 task 3.1452 route 1.1096 bal 0.1442 cap 0.0000
+[stageB] step 1600 task 2.6149 route 0.8319 bal 0.2694 cap 0.0000
+[stageB] step 2000 task 2.7560 route 0.7566 bal 0.0880 cap 0.0000
+[stageB] step 2400 task 2.7836 route 0.7569 bal 0.0974 cap 0.0000
+[stageB] step 2800 task 2.7909 route 0.5745 bal 0.0937 cap 0.0000
+[stageB] step 3200 task 2.4726 route 0.6435 bal 0.0665 cap 0.0000
+[stageB] step 3600 task 3.3051 route 0.8749 bal 0.6113 cap 0.0000
+[concepts] installed cluster-centroid concept atoms in planner d_router space
+[stageB] saved planner into hive_runs_fss1str/hive.pt
+[run-all] stage C
+[stageC] vocab=16384 d_cube=192 d_h=24 d_emb=128 d_router=320 d_ff=512 layers=2 cubes=[6, 6] top_x=3 heads=8 m=[2, 2] route=sparsemax sheaf=True pc=True total_cubes=12
+[concepts] installed cluster-centroid concept atoms in planner d_router space
+[stageC] step 0 task 2.3979 route 0.3453 obs 0.0028
+[stageC] step 1000 task 1.3161 route 0.3822 obs 0.0034
+[stageC] step 2000 task 0.8588 route 0.4201 obs 0.0024
+[stageC] step 3000 task 1.3479 route 0.2134 obs 0.0044
+[stageC] step 4000 task 1.0352 route 0.4838 obs 0.0020
+[stageC] step 5000 task 1.5523 route 0.4445 obs 0.0002
+[stageC] step 6000 task 1.2318 route 0.3233 obs 0.0039
+[stageC] step 7000 task 1.4697 route 0.5550 obs 0.0022
+[stageC] step 8000 task 1.2571 route 0.2877 obs 0.0021
+[stageC] step 9000 task 1.4402 route 0.2691 obs 0.0008
+[concepts] installed cluster-centroid concept atoms in planner d_router space
+[stageC] saved hive_runs_fss1str/hive.pt
+[run-all] cluster eval
+[concepts] installed cluster-centroid concept atoms in planner d_router space
+[cluster-eval] perplexity by cluster composition
+[cluster-eval] single layer=0 cube=0 ppl=4.40 n=256
+[cluster-eval] single layer=0 cube=1 ppl=11.92 n=256
+[cluster-eval] single layer=0 cube=2 ppl=3.67 n=256
+[cluster-eval] single layer=0 cube=3 ppl=1.41 n=256
+[cluster-eval] single layer=0 cube=4 ppl=1.35 n=256
+[cluster-eval] single layer=0 cube=5 ppl=4.23 n=256
+[cluster-eval] pair layer=0 cubes=0,1 ppl=76.15 n=256
+[cluster-eval] pair layer=0 cubes=0,2 ppl=23.48 n=256
+[cluster-eval] pair layer=0 cubes=0,3 ppl=6.74 n=256
+[cluster-eval] pair layer=0 cubes=0,4 ppl=5.53 n=256
+[cluster-eval] pair layer=0 cubes=0,5 ppl=31.83 n=256
+[cluster-eval] pair layer=0 cubes=1,2 ppl=35.71 n=256
+[cluster-eval] pair layer=0 cubes=1,3 ppl=12.26 n=256
+[cluster-eval] pair layer=0 cubes=1,4 ppl=10.17 n=256
+[cluster-eval] pair layer=0 cubes=1,5 ppl=44.26 n=256
+[cluster-eval] pair layer=0 cubes=2,3 ppl=6.37 n=256
+[cluster-eval] pair layer=0 cubes=2,4 ppl=5.04 n=256
+[cluster-eval] pair layer=0 cubes=2,5 ppl=29.83 n=256
+[cluster-eval] pair layer=0 cubes=3,4 ppl=2.34 n=256
+[cluster-eval] pair layer=0 cubes=3,5 ppl=18.97 n=256
+[cluster-eval] pair layer=0 cubes=4,5 ppl=15.44 n=256
+[cluster-eval] triple layer=0 cubes=0,1,2 ppl=109.93 n=256
+[cluster-eval] triple layer=0 cubes=0,1,3 ppl=38.69 n=256
+[cluster-eval] triple layer=0 cubes=0,1,4 ppl=31.89 n=256
+[cluster-eval] triple layer=0 cubes=0,1,5 ppl=131.85 n=256
+[cluster-eval] triple layer=0 cubes=0,2,3 ppl=21.23 n=256
+[cluster-eval] triple layer=0 cubes=0,2,4 ppl=16.90 n=256
+[cluster-eval] triple layer=0 cubes=0,2,5 ppl=79.58 n=256
+[cluster-eval] triple layer=0 cubes=0,3,4 ppl=6.77 n=256
+[cluster-eval] triple layer=0 cubes=0,3,5 ppl=38.66 n=256
+[cluster-eval] triple layer=0 cubes=0,4,5 ppl=32.87 n=256
+[cluster-eval] triple layer=0 cubes=1,2,3 ppl=27.44 n=256
+[cluster-eval] triple layer=0 cubes=1,2,4 ppl=22.10 n=256
+[cluster-eval] triple layer=0 cubes=1,2,5 ppl=89.67 n=256
+[cluster-eval] triple layer=0 cubes=1,3,4 ppl=9.55 n=256
+[cluster-eval] triple layer=0 cubes=1,3,5 ppl=47.96 n=256
+[cluster-eval] triple layer=0 cubes=1,4,5 ppl=42.64 n=256
+[cluster-eval] triple layer=0 cubes=2,3,4 ppl=6.76 n=256
+[cluster-eval] triple layer=0 cubes=2,3,5 ppl=38.48 n=256
+[cluster-eval] triple layer=0 cubes=2,4,5 ppl=32.11 n=256
+[cluster-eval] triple layer=0 cubes=3,4,5 ppl=22.09 n=256
+[cluster-eval] mixed layer=0 ppl=113.23 n=256
+[cluster-acts] layer0_single_0 route=[[(3, 1.0)], [(4, 1.0)]] prompt= तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं.
+[cluster-acts] layer0_single_1 route=[[(2, 0.8238444328308105), (0, 0.17615556716918945)], [(1, 0.5342710018157959), (0, 0.4657289981842041)]] prompt= Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood a
+[cluster-acts] layer0_pair_0 route=[[(1, 1.0)], [(3, 0.8542144298553467), (5, 0.14578557014465332)]] prompt= तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं.
+[cluster-acts] layer0_pair_1 route=[[(5, 0.9902389049530029), (1, 0.00976109504699707)], [(1, 0.5900337100028992), (5, 0.21016091108322144), (3, 0.19980543851852417)]] prompt= Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood a
+[cluster-acts] layer0_triple_0 route=[[(1, 0.8237483501434326), (5, 0.17625164985656738)], [(3, 0.5186293125152588), (5, 0.4813706874847412)]] prompt= तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं.
+[cluster-acts] layer0_triple_1 route=[[(5, 0.8370308876037598), (1, 0.16296911239624023)], [(3, 0.4178139269351959), (1, 0.39412370324134827), (5, 0.18806234002113342)]] prompt= Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood a
+[cluster-acts] layer0_mixed_0 route=[[(5, 1.0)], [(1, 1.0)]] prompt= If you pour liquid onto a powder, the powder gets disturbed and swirls up into the air. It can hit you in the face. The
+[cluster-acts] layer0_mixed_1 route=[[(5, 0.995720386505127), (1, 0.004279613494873047)], [(1, 0.6310432553291321), (5, 0.22165614366531372), (3, 0.14730054140090942)]] prompt= November 2014 Briefing provides information on Unclassified Controlled Nuclear Information Reviewing Official's Trainin
+[cluster-eval] single layer=1 cube=0 ppl=3.38 n=256
+[cluster-eval] single layer=1 cube=1 ppl=3.35 n=256
+[cluster-eval] single layer=1 cube=2 ppl=1.39 n=256
+[cluster-eval] single layer=1 cube=3 ppl=10.13 n=256
+[cluster-eval] single layer=1 cube=4 ppl=1.28 n=256
+[cluster-eval] single layer=1 cube=5 ppl=5.41 n=256
+[cluster-eval] pair layer=1 cubes=0,1 ppl=20.25 n=256
+[cluster-eval] pair layer=1 cubes=0,2 ppl=4.97 n=256
+[cluster-eval] pair layer=1 cubes=0,3 ppl=62.94 n=256
+[cluster-eval] pair layer=1 cubes=0,4 ppl=5.28 n=256
+[cluster-eval] pair layer=1 cubes=0,5 ppl=33.66 n=256
+[cluster-eval] pair layer=1 cubes=1,2 ppl=4.89 n=256
+[cluster-eval] pair layer=1 cubes=1,3 ppl=57.09 n=256
+[cluster-eval] pair layer=1 cubes=1,4 ppl=5.20 n=256
+[cluster-eval] pair layer=1 cubes=1,5 ppl=32.66 n=256
+[cluster-eval] pair layer=1 cubes=2,3 ppl=35.77 n=256
+[cluster-eval] pair layer=1 cubes=2,4 ppl=2.36 n=256
+[cluster-eval] pair layer=1 cubes=2,5 ppl=19.30 n=256
+[cluster-eval] pair layer=1 cubes=3,4 ppl=10.06 n=256
+[cluster-eval] pair layer=1 cubes=3,5 ppl=51.66 n=256
+[cluster-eval] pair layer=1 cubes=4,5 ppl=26.14 n=256
+[cluster-eval] triple layer=1 cubes=0,1,2 ppl=16.00 n=256
+[cluster-eval] triple layer=1 cubes=0,1,3 ppl=113.91 n=256
+[cluster-eval] triple layer=1 cubes=0,1,4 ppl=18.13 n=256
+[cluster-eval] triple layer=1 cubes=0,1,5 ppl=79.71 n=256
+[cluster-eval] triple layer=1 cubes=0,2,3 ppl=50.50 n=256
+[cluster-eval] triple layer=1 cubes=0,2,4 ppl=6.43 n=256
+[cluster-eval] triple layer=1 cubes=0,2,5 ppl=33.05 n=256
+[cluster-eval] triple layer=1 cubes=0,3,4 ppl=32.85 n=256
+[cluster-eval] triple layer=1 cubes=0,3,5 ppl=134.66 n=256
+[cluster-eval] triple layer=1 cubes=0,4,5 ppl=36.79 n=256
+[cluster-eval] triple layer=1 cubes=1,2,3 ppl=48.19 n=256
+[cluster-eval] triple layer=1 cubes=1,2,4 ppl=6.27 n=256
+[cluster-eval] triple layer=1 cubes=1,2,5 ppl=32.26 n=256
+[cluster-eval] triple layer=1 cubes=1,3,4 ppl=30.93 n=256
+[cluster-eval] triple layer=1 cubes=1,3,5 ppl=125.19 n=256
+[cluster-eval] triple layer=1 cubes=1,4,5 ppl=35.93 n=256
+[cluster-eval] triple layer=1 cubes=2,3,4 ppl=21.40 n=256
+[cluster-eval] triple layer=1 cubes=2,3,5 ppl=105.09 n=256
+[cluster-eval] triple layer=1 cubes=2,4,5 ppl=22.83 n=256
+[cluster-eval] triple layer=1 cubes=3,4,5 ppl=47.73 n=256
+[cluster-eval] mixed layer=1 ppl=38.20 n=256
+[cluster-acts] layer1_single_0 route=[[(2, 1.0)], [(0, 1.0)]] prompt= There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, 
+[cluster-acts] layer1_single_1 route=[[(2, 1.0)], [(0, 1.0)]] prompt= On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mi
+[cluster-acts] layer1_pair_0 route=[[(2, 1.0)], [(0, 1.0)]] prompt= There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, 
+[cluster-acts] layer1_pair_1 route=[[(2, 0.8468475341796875), (0, 0.0909566879272461), (5, 0.062195777893066406)], [(1, 0.5994257926940918), (0, 0.4005742073059082)]] prompt= On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mi
+[cluster-acts] layer1_triple_0 route=[[(2, 1.0)], [(0, 1.0)]] prompt= There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, 
+[cluster-acts] layer1_triple_1 route=[[(2, 0.6795375943183899), (5, 0.23642569780349731), (0, 0.08403664827346802)], [(1, 0.7253782749176025), (0, 0.27462172508239746)]] prompt= On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mi
+[cluster-acts] layer1_mixed_0 route=[[(0, 1.0)], [(1, 1.0)]] prompt= We're just poorly paid. That's all. SAP PLM Posted on Sep 23, 2021 by Global Enterprise Partners Not Specified, Netherl
+[cluster-acts] layer1_mixed_1 route=[[(0, 1.0)], [(1, 1.0)]] prompt= What do you keep looking at? Indra, Agni, Vayu, Chandra and Surya were born from the body of Virata. Rigveda 10:90:13. 
+[cluster-eval] wrote hive_runs_fss1str/cluster_eval.json
+[run-all] complete

@@ -1,0 +1,448 @@
+{
+  "single": {
+    "layer0_cube0": 4.399039464083278,
+    "layer0_cube1": 11.921485312961451,
+    "layer0_cube2": 3.6743296030052326,
+    "layer0_cube3": 1.4083184088072085,
+    "layer0_cube4": 1.3508136132189377,
+    "layer0_cube5": 4.228267777135961,
+    "layer1_cube0": 3.379069475384159,
+    "layer1_cube1": 3.354932600663839,
+    "layer1_cube2": 1.3930364848622474,
+    "layer1_cube3": 10.126638923554069,
+    "layer1_cube4": 1.277948038666678,
+    "layer1_cube5": 5.414714358092313
+  },
+  "pair": {
+    "layer0_cube0_1": 76.14953745595524,
+    "layer0_cube0_2": 23.47953180094546,
+    "layer0_cube0_3": 6.738525346688881,
+    "layer0_cube0_4": 5.532252103173738,
+    "layer0_cube0_5": 31.8264776210027,
+    "layer0_cube1_2": 35.71410156278013,
+    "layer0_cube1_3": 12.257319030923817,
+    "layer0_cube1_4": 10.168297270877597,
+    "layer0_cube1_5": 44.25633527849499,
+    "layer0_cube2_3": 6.366136527061988,
+    "layer0_cube2_4": 5.038635550329516,
+    "layer0_cube2_5": 29.828181870427265,
+    "layer0_cube3_4": 2.3397139312925748,
+    "layer0_cube3_5": 18.965190843843413,
+    "layer0_cube4_5": 15.436542239085218,
+    "layer1_cube0_1": 20.246246981269085,
+    "layer1_cube0_2": 4.968197867177521,
+    "layer1_cube0_3": 62.94088666104362,
+    "layer1_cube0_4": 5.2767000949854665,
+    "layer1_cube0_5": 33.660570361093704,
+    "layer1_cube1_2": 4.891132390197919,
+    "layer1_cube1_3": 57.088169020745305,
+    "layer1_cube1_4": 5.200328097054517,
+    "layer1_cube1_5": 32.66054783289865,
+    "layer1_cube2_3": 35.76692466563809,
+    "layer1_cube2_4": 2.360584782381959,
+    "layer1_cube2_5": 19.302956469425506,
+    "layer1_cube3_4": 10.058557376254944,
+    "layer1_cube3_5": 51.65969611536623,
+    "layer1_cube4_5": 26.136797731641057
+  },
+  "triple": {
+    "layer0_cube0_1_2": 109.93243716640552,
+    "layer0_cube0_1_3": 38.68588033441436,
+    "layer0_cube0_1_4": 31.89446462864072,
+    "layer0_cube0_1_5": 131.84704909685334,
+    "layer0_cube0_2_3": 21.22676120503794,
+    "layer0_cube0_2_4": 16.895302878268655,
+    "layer0_cube0_2_5": 79.58412234854362,
+    "layer0_cube0_3_4": 6.773989023877291,
+    "layer0_cube0_3_5": 38.659417362503596,
+    "layer0_cube0_4_5": 32.87149369963796,
+    "layer0_cube1_2_3": 27.43686977363784,
+    "layer0_cube1_2_4": 22.103106901626635,
+    "layer0_cube1_2_5": 89.6744387054268,
+    "layer0_cube1_3_4": 9.546935631931271,
+    "layer0_cube1_3_5": 47.96375138084621,
+    "layer0_cube1_4_5": 42.64458962712966,
+    "layer0_cube2_3_4": 6.757753368630464,
+    "layer0_cube2_3_5": 38.48182064757435,
+    "layer0_cube2_4_5": 32.10902658736581,
+    "layer0_cube3_4_5": 22.089329703769653,
+    "layer1_cube0_1_2": 16.00238465504325,
+    "layer1_cube0_1_3": 113.91308028999164,
+    "layer1_cube0_1_4": 18.125874686821266,
+    "layer1_cube0_1_5": 79.71235764828242,
+    "layer1_cube0_2_3": 50.50323735138558,
+    "layer1_cube0_2_4": 6.430074159107725,
+    "layer1_cube0_2_5": 33.04892898893182,
+    "layer1_cube0_3_4": 32.84917487732895,
+    "layer1_cube0_3_5": 134.65783782750222,
+    "layer1_cube0_4_5": 36.78648466000786,
+    "layer1_cube1_2_3": 48.18620088287341,
+    "layer1_cube1_2_4": 6.272364025448714,
+    "layer1_cube1_2_5": 32.26396903419432,
+    "layer1_cube1_3_4": 30.930151882364854,
+    "layer1_cube1_3_5": 125.19422133066979,
+    "layer1_cube1_4_5": 35.92536181173634,
+    "layer1_cube2_3_4": 21.401928546981154,
+    "layer1_cube2_3_5": 105.08858832422901,
+    "layer1_cube2_4_5": 22.829752356268735,
+    "layer1_cube3_4_5": 47.733189886000105
+  },
+  "mixed": {
+    "layer0_mixed": 113.22981735979393,
+    "layer1_mixed": 38.20288399475258
+  },
+  "activations": {
+    "layer0_single_0": {
+      "prompt": " तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं. 康熙帝为政宽仁,留心民间疾苦,在他亲政不久后,便宣布停止圈地,放宽垦荒地的免税年限。 Bu istehza qonaqların da təbəssümünə səbəb oldu. - 37 - Qonaqlar gedəndən sonra İstam ağa qoyunu soyub qurtardı. Sudėtiniai daiktavardžiai vokiečių kalba. אישה פרואנית מקסימה שבאמת קל להתאהב בה, עם המון חום ואהבה כלפיי מטיילים ישראלים. Nel Mediterraneo, i Cetacei che più frequentemente si scontrano con le navi sono i capodogli e balenottere minori. Сфера основных политико-публицистических работ — материалистическая философия, теория марксизма, антикапитализм и антиимпериализм, теория и практика осуществления социалистической революции, построения социализма и коммунизма , политическая экономия социализма. The new Congress met for a few weeks in March 1867, then adjourned, leaving the House Committee on the Judiciary behind, tasked in the first impeachment inquiry against Johnson with reporting back to the",
+      "routes": [
+        [
+          [
+            3,
+            1.0
+          ]
+        ],
+        [
+          [
+            4,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer0_single_1": {
+      "prompt": " Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood and overall well-being. Just remember to be patient and supportive, and understand that recovery from depression can be a process that takes time. Also, remind your friend that seeking professional help is always an option, and that there is no shame in doing so. Take care, and all the best to you and your friend.",
+      "routes": [
+        [
+          [
+            2,
+            0.8238444328308105
+          ],
+          [
+            0,
+            0.17615556716918945
+          ]
+        ],
+        [
+          [
+            1,
+            0.5342710018157959
+          ],
+          [
+            0,
+            0.4657289981842041
+          ]
+        ]
+      ]
+    },
+    "layer0_pair_0": {
+      "prompt": " तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं. 康熙帝为政宽仁,留心民间疾苦,在他亲政不久后,便宣布停止圈地,放宽垦荒地的免税年限。 Bu istehza qonaqların da təbəssümünə səbəb oldu. - 37 - Qonaqlar gedəndən sonra İstam ağa qoyunu soyub qurtardı. Sudėtiniai daiktavardžiai vokiečių kalba. אישה פרואנית מקסימה שבאמת קל להתאהב בה, עם המון חום ואהבה כלפיי מטיילים ישראלים. Nel Mediterraneo, i Cetacei che più frequentemente si scontrano con le navi sono i capodogli e balenottere minori. Сфера основных политико-публицистических работ — материалистическая философия, теория марксизма, антикапитализм и антиимпериализм, теория и практика осуществления социалистической революции, построения социализма и коммунизма , политическая экономия социализма. The new Congress met for a few weeks in March 1867, then adjourned, leaving the House Committee on the Judiciary behind, tasked in the first impeachment inquiry against Johnson with reporting back to the",
+      "routes": [
+        [
+          [
+            1,
+            1.0
+          ]
+        ],
+        [
+          [
+            3,
+            0.8542144298553467
+          ],
+          [
+            5,
+            0.14578557014465332
+          ]
+        ]
+      ]
+    },
+    "layer0_pair_1": {
+      "prompt": " Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood and overall well-being. Just remember to be patient and supportive, and understand that recovery from depression can be a process that takes time. Also, remind your friend that seeking professional help is always an option, and that there is no shame in doing so. Take care, and all the best to you and your friend.",
+      "routes": [
+        [
+          [
+            5,
+            0.9902389049530029
+          ],
+          [
+            1,
+            0.00976109504699707
+          ]
+        ],
+        [
+          [
+            1,
+            0.5900337100028992
+          ],
+          [
+            5,
+            0.21016091108322144
+          ],
+          [
+            3,
+            0.19980543851852417
+          ]
+        ]
+      ]
+    },
+    "layer0_triple_0": {
+      "prompt": " तथापि युरोप खंडातील परिस्थिती चिघळतच असल्याचं गेल्या आठवड्यात वाढलेल्या रुग्णांच्या आणि मृतांच्या संख्येवरून दिसून आलं. 康熙帝为政宽仁,留心民间疾苦,在他亲政不久后,便宣布停止圈地,放宽垦荒地的免税年限。 Bu istehza qonaqların da təbəssümünə səbəb oldu. - 37 - Qonaqlar gedəndən sonra İstam ağa qoyunu soyub qurtardı. Sudėtiniai daiktavardžiai vokiečių kalba. אישה פרואנית מקסימה שבאמת קל להתאהב בה, עם המון חום ואהבה כלפיי מטיילים ישראלים. Nel Mediterraneo, i Cetacei che più frequentemente si scontr Not a traditional zombie There are many ways to label this kind of creatures. Zombie doesn't quite fit, as they normally only regenerate once in the sense that they are coming back to life. But their bodies are still the way they were when they died and they normally can't regain lost limbs. Zombies tend to be quite dumb, too. Many opportunities depending on the style Depending on the style of the regeneration you could draw inspiration from different existing works of fiction. The names however should be used carefully. You want to show some measure of originality to make them your own. Frankenstein for example created a monster from different body parts. If your character can simply take limbs he finds lying around and sew them to his body this might be an ideal source of inspiration. Doctor",
+      "routes": [
+        [
+          [
+            1,
+            0.8237483501434326
+          ],
+          [
+            5,
+            0.17625164985656738
+          ]
+        ],
+        [
+          [
+            3,
+            0.5186293125152588
+          ],
+          [
+            5,
+            0.4813706874847412
+          ]
+        ]
+      ]
+    },
+    "layer0_triple_1": {
+      "prompt": " Encouraging your friend to establish healthy habits and routines like exercise can definitely help improve their mood and overall well-being. Just remember to be patient and supportive, and understand that recovery from depression can be a process that takes time. Also, remind your friend that seeking professional help is always an option, and that there is no shame in doing so. Take care, and all the best to you and your friend. area. I haven’t blogged much about the trip but the date is approaching. For now, I’m too excited to put it into words. I’m looking forward to hearing about your trip when you’re ready to talk about it! I love this post! I adore cheese and have been dying to read this book. I’m afraid to do it until after my pregnancy is over though (there are a lot of cheeses you’re not supposed to eat while pregnant…this book would be too tempting right now!!). 🙂 I’m glad you’ve stepped happily into the wild world of cheese! I still can’t bring myself to try the bleu cheeses either. One day? I would have a very hard time if I developed a lactose",
+      "routes": [
+        [
+          [
+            5,
+            0.8370308876037598
+          ],
+          [
+            1,
+            0.16296911239624023
+          ]
+        ],
+        [
+          [
+            3,
+            0.4178139269351959
+          ],
+          [
+            1,
+            0.39412370324134827
+          ],
+          [
+            5,
+            0.18806234002113342
+          ]
+        ]
+      ]
+    },
+    "layer0_mixed_0": {
+      "prompt": " If you pour liquid onto a powder, the powder gets disturbed and swirls up into the air. It can hit you in the face. The liquid beads up due to surface tension and runs down the hillock of powder without wetting it out. You get lumps forming, some of which which are dry in the center and require mechanical action to break up. Not a traditional zombie There are many ways to label this kind of creatures. Zombie doesn't quite fit, as they normally only regenerate once in the sense that they are coming back to life. But their bodies are still the way they were when they died and they normally can't regain lost limbs. Zombies tend to be quite dumb, too. Many opportunities depending on the style Depending on the style of the regeneration you could draw inspiration from different existing works of fiction. The names however should be used carefully. You want to show some measure of originality to make them your own. Frankenstein for example created a monster from different body parts. If your character can simply take limbs he finds lying around and sew them to his body this might be an ideal source of inspiration. Doctor",
+      "routes": [
+        [
+          [
+            5,
+            1.0
+          ]
+        ],
+        [
+          [
+            1,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer0_mixed_1": {
+      "prompt": " November 2014 Briefing provides information on Unclassified Controlled Nuclear Information Reviewing Official's Training. For DOE Headquarters personnel: Prior to completing this training a Request for Authority form should have been submitted to the Office of Quality Management, HS-61. This training is the next step to becoming an Unclassified Controlled Nuclear Information (UCNI) Reviewing Official (RO). Once you have completed this training, contact Richard Worthington, Senior Trainer, at 301-903-0819 or richard.worthington@hq.doe.gov to request the marking exercises and policy exam . The policy and marking exam must be returned for evaluation. If the exam is completed with a score of 80% or higher, you will be sent a Letter of Authority which will identify the jurisdiction of your authority and authorize you to review documents and determine whether they contain UCNI. In order to retain your authority, you must complete training every 2 years. For other Programs and Elements: Contact your Classification Officer for information on becoming an UCNI RO. area. I haven’t blogged much about the trip but the date is approaching. For now, I’m too excited to put it into words. I’m looking forward to hearing about your trip when you’re ready to talk about it! I love this post! I adore cheese and have been dying to read this book. I’m afraid to do it until after my pregnancy is over though (there are a lot of cheeses you’re not supposed to eat while pregnant…this book would be too tempting right now!!). 🙂 I’m glad you’ve stepped happily into the wild world of cheese! I still can’t bring myself to try the bleu cheeses either. One day? I would have a very hard time if I developed a lactose",
+      "routes": [
+        [
+          [
+            5,
+            0.995720386505127
+          ],
+          [
+            1,
+            0.004279613494873047
+          ]
+        ],
+        [
+          [
+            1,
+            0.6310432553291321
+          ],
+          [
+            5,
+            0.22165614366531372
+          ],
+          [
+            3,
+            0.14730054140090942
+          ]
+        ]
+      ]
+    },
+    "layer1_single_0": {
+      "prompt": " There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, which is known for its homemade, artisanal gelato made from fresh ingredients. For pasticciotto, Pasticceria Nuvoletta is a popular spot, where you can find a variety of flavors and fillings. Sfogliatelle can be found at many local bakeries, including Pasticceria Caputo and Pasticceria Santa Maria delle Grazie. If you're looking for a crostata or fresh fruit salad, many cafes and restaurants offer these as part of their dessert menu.",
+      "routes": [
+        [
+          [
+            2,
+            1.0
+          ]
+        ],
+        [
+          [
+            0,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer1_single_1": {
+      "prompt": " On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mission to explore the planet's surface and collect data to determine whether Mars ever had an environment able to support microbial life. The landing was considered a significant milestone in space exploration and was covered widely in the media.",
+      "routes": [
+        [
+          [
+            2,
+            1.0
+          ]
+        ],
+        [
+          [
+            0,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer1_pair_0": {
+      "prompt": " There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, which is known for its homemade, artisanal gelato made from fresh ingredients. For pasticciotto, Pasticceria Nuvoletta is a popular spot, where you can find a variety of flavors and fillings. Sfogliatelle can be found at many local bakeries, including Pasticceria Caputo and Pasticceria Santa Maria delle Grazie. If you're looking for a crostata or fresh fruit salad, many cafes and restaurants offer these as part of their dessert menu.",
+      "routes": [
+        [
+          [
+            2,
+            1.0
+          ]
+        ],
+        [
+          [
+            0,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer1_pair_1": {
+      "prompt": " On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mission to explore the planet's surface and collect data to determine whether Mars ever had an environment able to support microbial life. The landing was considered a significant milestone in space exploration and was covered widely in the media.",
+      "routes": [
+        [
+          [
+            2,
+            0.8468475341796875
+          ],
+          [
+            0,
+            0.0909566879272461
+          ],
+          [
+            5,
+            0.062195777893066406
+          ]
+        ],
+        [
+          [
+            1,
+            0.5994257926940918
+          ],
+          [
+            0,
+            0.4005742073059082
+          ]
+        ]
+      ]
+    },
+    "layer1_triple_0": {
+      "prompt": " There are many great places to find these desserts in Foggia. For gelato, you may want to visit Gelateria Il Principe, which is known for its homemade, artisanal gelato made from fresh ingredients. For pasticciotto, Pasticceria Nuvoletta is a popular spot, where you can find a variety of flavors and fillings. Sfogliatelle can be found at many local bakeries, including Pasticceria Caputo and Pasticceria Santa Maria delle Grazie. If you're looking for a crostata or fresh fruit salad, many cafes and restaurants offer these as part of their dessert menu. SAP PLM Posted on Sep 23, 2021 by Global Enterprise Partners Not Specified, Netherlands IT Immediate Start Annual Salary Contract/Project Global Enterprise Partners is currently looking for a functional consultant with a strong background in SAP Product Life Cycle Management (SAP PLM). This is for a project in Holland. What we ask: - A minimum of 5+ years of experience in SAP Product Life Cycle Management (SAP PLM). - Someone with a functional background (Someone that can bridge the gap between business and IT - Strong stake holder management experience - Requirements gathering experience - Someone that has at least done 2 full - life cycle implementations in SAP Product Life Cycle Management (SAP PLM",
+      "routes": [
+        [
+          [
+            2,
+            1.0
+          ]
+        ],
+        [
+          [
+            0,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer1_triple_1": {
+      "prompt": " On April 7, 2013, the NASA's Mars Curiosity Rover landed on Mars. The landing was successful and the rover began its mission to explore the planet's surface and collect data to determine whether Mars ever had an environment able to support microbial life. The landing was considered a significant milestone in space exploration and was covered widely in the media. Indra, Agni, Vayu, Chandra and Surya were born from the body of Virata. Rigveda 10:90:13. The Moon was gendered from his mind, and from his eye the Sun had birth; Indra and Agni from his mouth were born, and Vayu from his breath. In Rigveda 1:164:33 Indra is said to be born from Dyuas and Prithvi. Dyaus is my Father, my begetter: kinship is here. This great earth is my kin and Mother.Between the wide-spread world-halves is the birth-place: the Father laid the Daughter's germ within it.Rigved 1;164:33 Rig",
+      "routes": [
+        [
+          [
+            2,
+            0.6795375943183899
+          ],
+          [
+            5,
+            0.23642569780349731
+          ],
+          [
+            0,
+            0.08403664827346802
+          ]
+        ],
+        [
+          [
+            1,
+            0.7253782749176025
+          ],
+          [
+            0,
+            0.27462172508239746
+          ]
+        ]
+      ]
+    },
+    "layer1_mixed_0": {
+      "prompt": " We're just poorly paid. That's all. SAP PLM Posted on Sep 23, 2021 by Global Enterprise Partners Not Specified, Netherlands IT Immediate Start Annual Salary Contract/Project Global Enterprise Partners is currently looking for a functional consultant with a strong background in SAP Product Life Cycle Management (SAP PLM). This is for a project in Holland. What we ask: - A minimum of 5+ years of experience in SAP Product Life Cycle Management (SAP PLM). - Someone with a functional background (Someone that can bridge the gap between business and IT - Strong stake holder management experience - Requirements gathering experience - Someone that has at least done 2 full - life cycle implementations in SAP Product Life Cycle Management (SAP PLM",
+      "routes": [
+        [
+          [
+            0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "layer1_mixed_1": {
+      "prompt": " What do you keep looking at? Indra, Agni, Vayu, Chandra and Surya were born from the body of Virata. Rigveda 10:90:13. The Moon was gendered from his mind, and from his eye the Sun had birth; Indra and Agni from his mouth were born, and Vayu from his breath. In Rigveda 1:164:33 Indra is said to be born from Dyuas and Prithvi. Dyaus is my Father, my begetter: kinship is here. This great earth is my kin and Mother.Between the wide-spread world-halves is the birth-place: the Father laid the Daughter's germ within it.Rigved 1;164:33 Rig",
+      "routes": [
+        [
+          [
+            0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1,
+            1.0
+          ]
+        ]
+      ]
+    }
+  }
+}

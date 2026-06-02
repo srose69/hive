@@ -1,0 +1,73 @@
+  seed: 1337               # Global RNG seed for prepare/train/eval.
+  layers: 2                # Number of Hive layers; each layer has its own set of cubes.
+  cubes_per_layer: 6       # Moderate cube count; enough specialization without overfragmenting the router.
+  top_x: 3                 # Let the planner read several cubes so mixed prompts can combine experts.
+  heads: 8                 # d_cube / heads = 24: still reasonably fat heads, but better matched to a 192-wide cube.
+  blocks_per_cube: 2       # Wider cubes, so keep them shallower to control compute and make Stage A easier to fit.
+  d_cube: 192              # Wider cube hidden width; each expert has real capacity now, so other scales must grow with it.
+  d_emb: 128               # Fatter ABI so the shared interface does not bottleneck 192-wide cubes or long 512-token contexts.
+  d_router: 320            # Make router wider than before so planner capacity stays ahead of expert-selection complexity.
+  router_blocks: 3         # Deep enough to plan well, but not so deep that Stage B/C become the new bottleneck.
+  router_heads: 8          # Keep planner attention broader than cube attention.
+  dense_pre_blocks: 2      # Bottom dense feature extractor before Hive; enough to parse context without replacing the Hive itself.
+  dense_pre_heads: 8       # Keep the pre-Hive dense wrapper full-width and well-mixed.
+  dense_pre_ff: 384        # Slightly fatter than cube FF so the encoder can clean up features before routing.
+  dense_post_blocks: 2     # Top dense feature composer after Hive; recombines expert traces into a coherent LM stream.
+  dense_post_heads: 8      # Match pre-Hive attention width for symmetry.
+  dense_post_ff: 384       # Slightly fat composer so post-Hive synthesis is not the bottleneck.
+  seq_len: 1024            # Longer context; raises memory/compute enough that batch and parallelism must come down.
+  batch_size: 16           # Lower batch for 512-token, 192-wide cubes; recover stability via accumulation instead of raw VRAM.
+  parallel_cube_teach: 6   # Safe with cascaded Stage A and much less likely to explode VRAM than 6 workers at seq_len 512.
+  grad_accum_steps: 3      # Effective Stage-A batch is restored via accumulation without multiplying activation memory.
+  steps: 5000
+  # Shared fallback. If a stage-specific steps_* field is `auto`, it uses this value.
+  steps_abi: 7000
+  # Stage 0 / ABI pretrain: trains the shared token interface (embed + projection + unembed).
+  # Needed so all cubes learn in the same stable representation space instead of random geometry.
+  steps_stage_a: auto
+  # Stage A: trains each cube independently on its own cluster.
+  # This is where cubes become specialized experts for their assigned shard of the dataset.
+  steps_stage_b: 4000
+  # Stage B: trains the planner/router on top of frozen cubes.
+  # It learns which cubes to activate for a given prompt.
+  steps_stage_c: 10000
+  # Stage C: cautious global finetune of router + gates + cube internals together.
+  # Used to align the whole assembled system after cubes and planner were trained separately.
+
+  # `--run-all` will train a local tokenizer when you pass `--tokenizer-out`.
+  tokenizer: auto
+  tokenizer_vocab_size: 16384   # Target BPE vocab size for the local tokenizer.
+  tokenizer_min_frequency: 3    # Minimum pair frequency during BPE training.
+  dataset_text_column: text     # Text field name inside the HF Arrow dataset rows.
+  clusterized_dir: FSS1STR_clusterized  # Where per-layer/per-cube chunk tensors are written.
+
+  # FSS1STR is large; keep prepare/tokenizer bounded unless you explicitly want more.
+  prepare_max_docs: 200000      # Max raw rows to sample for prepare/clustering.
+  prepare_max_chunks: 250000    # Max token chunks to keep after chunking.
+  tokenizer_train_docs: 1000000 # Max raw rows used to train BPE.
+  eval_max_chunks: 256          # Per-cube eval sample cap before synthetic pair/triple/mixed eval.
+  activation_max_prompts: 2     # How many representative prompts per eval type to log routes for.
+  sliding_window_views: 3       # Number of chunking views written during prepare for Stage-A offset augmentation.
+
+  use_sheaf: true          # Optional sheaf consensus layer between cubes in a layer.
+  use_pc_head: true        # Optional predictive-coding refinement before unembed.
+  route_fn: sparsemax       # Sparse router weights with exact zeros.
+  symbolic_prior: true      # Seed planner logits from cluster-centroid similarity.
+
+  gate_temp: 0.6            # Slightly sharper gating helps wider cubes commit instead of half-opening on everything.
+  gate_margin: 1.0          # Target separation margin for positive vs negative gate logits.
+  hard_neg_frac: 0.75       # Bias negatives toward nearby foreign clusters; makes gate separation harder and more useful.
+  hard_neg_k: 2             # How many nearest foreign clusters count as "hard negatives".
+  lambda_margin: 0.5        # Wider cubes need LM pressure to dominate; keep margin helpful but not overwhelming.
+  stage_a_margin_adaptive: true # Scale margin pressure by current LM loss so gate separation does not dominate early.
+  label_smoothing: 0.1      # Stage-A LM label smoothing; reduces cluster-local token overfitting.
+  stage_a_unfreeze_final_norm: true # Only unfreeze ABI final_norm in Stage A; preserves ABI geometry while adapting normalization.
+  lambda_l0: 0.05
+
+  lr: 1.5e-4                # Slightly gentler base LR now that the ABI is wider and Stage 0 has more capacity to fit.
+  lr_router: 8.0e-5         # Slightly gentler planner LR for the wider router.
+  lr_gate: 5.0e-5           # Stage-C LR for cube gates and gate strength params.
+  lr_core: 2.0e-6           # Still tiny, but less frozen so Stage C can actually nudge wider cube internals.
+  lr_pc: 2e-3
+  lr_l0: 1e-3
+  out_dir: hive_runs_fss1str # Checkpoints, stage markers, and eval json outputs.
