@@ -148,31 +148,31 @@ $$
 Binding и unbinding поэлементные:
 
 $$
-\operatorname{bind}(s, x) = s \odot x,
+\mathrm{bind}(s, x) = s \odot x,
 \qquad
-\operatorname{unbind}(y, s) = y \odot \overline{s}.
+\mathrm{unbind}(y, s) = y \odot \overline{s}.
 $$
 
 Поскольку $|s| = 1$, код опирается на точное равенство:
 
 $$
-\operatorname{unbind}(\operatorname{bind}(s, x), s) = x.
+\mathrm{unbind}(\mathrm{bind}(s, x), s) = x.
 $$
 
 Несколько кубов пишут в одну bus-шину суммированием:
 
 $$
-K_{\text{bus}} = \sum_{c \in A_l} w_{l,c}\, \operatorname{bind}(s_{l,c}, K_{l,c}),
+K_{\text{bus}} = \sum_{c \in A_l} w_{l,c}\, \mathrm{bind}(s_{l,c}, K_{l,c}),
 \qquad
-V_{\text{bus}} = \sum_{c \in A_l} w_{l,c}\, \operatorname{bind}(s_{l,c}, V_{l,c}).
+V_{\text{bus}} = \sum_{c \in A_l} w_{l,c}\, \mathrm{bind}(s_{l,c}, V_{l,c}).
 $$
 
 Куб $c$ читает свою проекцию через unbind:
 
 $$
-\widetilde{K}_{l,c} = \operatorname{unbind}(K_{\text{bus}}, s_{l,c}),
+\widetilde{K}_{l,c} = \mathrm{unbind}(K_{\text{bus}}, s_{l,c}),
 \qquad
-\widetilde{V}_{l,c} = \operatorname{unbind}(V_{\text{bus}}, s_{l,c}).
+\widetilde{V}_{l,c} = \mathrm{unbind}(V_{\text{bus}}, s_{l,c}).
 $$
 
 ### ABI
@@ -180,7 +180,7 @@ $$
 Общий интерфейс задается так:
 
 $$
-e = \operatorname{Embed}(t),
+e = \mathrm{Embed}(t),
 \qquad
 h_0 = P_{\text{in}} e.
 $$
@@ -194,7 +194,7 @@ $$
 Тогда логиты равны:
 
 $$
-\ell = E^\top P_{\text{in}}^\top \operatorname{RMSNorm}(h),
+\ell = E^\top P_{\text{in}}^\top \mathrm{RMSNorm}(h),
 $$
 
 где $E$ — embedding matrix.
@@ -218,22 +218,21 @@ $$
 При включенном symbolic prior итоговые логиты кубов:
 
 $$
-\ell_c
-=
-\ell_{\text{learned},c}
-+
-\lambda_{\text{prior}}
-\frac{\cos(\widehat{\rho}, \widehat{C}_c)}{\tau_{\text{prior}}},
+\ell_c =
+\ell_{\mathrm{learned},c} +
+s_{\mathrm{prior}}
+\frac{\cos(\widehat{\rho}, \widehat{C}_c)}
+{\max(\tau_{\mathrm{prior}}, 0.1)}.
 $$
 
-где $C_c$ — centroid-derived concept vector куба $c$.
+где $C_c$ — centroid-derived concept vector куба $c$, $s_{\mathrm{prior}}$ — это `prior_scale`, а $\tau_{\mathrm{prior}}$ — это `prior_temp`.
 
 После этого на каждом слое вычисляются route weights:
 
 $$
-w_l = \operatorname{sparsemax}(\ell_l)
+w_l = \mathrm{sparsemax}(\ell_l)
 \quad\text{или}\quad
-w_l = \operatorname{softmax}(\ell_l),
+w_l = \mathrm{softmax}(\ell_l),
 $$
 
 а `top_x` ограничивает число реально активных кубов на инференсе.
@@ -297,9 +296,8 @@ e_k = h - \hat{h}_k,
 $$
 
 $$
-z_{k+1}
-=
-z_k + \eta \left(W_{\text{dec}}^\top e_k - \lambda z_k\right),
+z_{k+1} =
+z_k + \eta \left(e_k W_{\mathrm{dec}} - \lambda z_k\right).
 $$
 
 и на выходе
@@ -340,11 +338,9 @@ $$
 Его loss в коде — обычный next-token cross-entropy плюс z-loss:
 
 $$
-\mathcal{L}_{\text{stage0}}
-=
-\mathcal{L}_{\text{LM}}
-+
-\lambda_z \, \mathbb{E}\big[(\log \sum_j e^{\ell_j})^2\big].
+\mathcal{L}_{\mathrm{stage0}} =
+\mathcal{L}_{\mathrm{LM}} +
+\lambda_z \mathbb{E}\!\left[\left(\log \sum_j e^{\ell_j}\right)^2\right].
 $$
 
 Артефакт:
@@ -368,47 +364,46 @@ $$
 Для слоев выше нулевого код оценивает масштаб входного шума:
 
 $$
-\sigma_l
-\approx
-\gamma_{\text{noise}}
-\cdot
-\frac{1}{\sqrt{2(l+1)}}
-\cdot
-\sqrt{n_{\text{terms}}}
-\cdot
-\operatorname{RMS}(h_0).
+\sigma_l \approx
+\gamma_{\mathrm{noise}}
+\frac{\sqrt{n_{\mathrm{terms}}}}{\sqrt{2(l+1)}}
+\mathrm{RMS}(h_0),
 $$
+
+где $\gamma_{\mathrm{noise}} =$ `stageA_noise_scale`.
 
 Stage A loss:
 
 $$
-\mathcal{L}_{A}
-=
-\mathcal{L}_{\text{task}}
-+
-\lambda_{\text{margin}} \mathcal{L}_{\text{margin}}
-+
-\lambda_{\text{open}} \mathcal{L}_{\text{open}}
-+
-\lambda_{\text{close}} \mathcal{L}_{\text{close}}.
+\mathcal{L}_A =
+\mathcal{L}_{\mathrm{task}} +
+\lambda_{\mathrm{margin}}^{\mathrm{eff}} \mathcal{L}_{\mathrm{margin}} +
+\lambda_{\mathrm{open}} \mathcal{L}_{\mathrm{open}} +
+\lambda_{\mathrm{close}} \mathcal{L}_{\mathrm{close}},
+$$
+
+где при `stage_a_margin_adaptive=True`
+
+$$
+\lambda_{\mathrm{margin}}^{\mathrm{eff}} =
+\lambda_{\mathrm{margin}}
+\frac{\mathcal{L}_{\mathrm{task}}}{\mathcal{L}_{\mathrm{task}} + 1}.
 $$
 
 Где:
 
 $$
-\mathcal{L}_{\text{margin}}
-=
-\mathbb{E}\big[\max(0, m - g^+_{\text{logit}})\big]
-+
-\mathbb{E}\big[\max(0, m + g^-_{\text{logit}})\big],
+\mathcal{L}_{\mathrm{margin}} =
+\mathbb{E}\!\left[\max(0, m - g^+_{\mathrm{logit}})\right] +
+\mathbb{E}\!\left[\max(0, m + g^-_{\mathrm{logit}})\right].
 $$
 
 $$
-\mathcal{L}_{\text{open}} = -\log(\mathbb{E}[g^+] + \varepsilon),
+\mathcal{L}_{\mathrm{open}} = -\log\!\left(\mathbb{E}[g^+] + \varepsilon\right).
 $$
 
 $$
-\mathcal{L}_{\text{close}} = \mathbb{E}\big[(\mathbb{E}[g^-])^2\big].
+\mathcal{L}_{\mathrm{close}} = \mathbb{E}\!\left[\left(\mathbb{E}[g^-]\right)^2\right].
 $$
 
 Артефакт:
@@ -422,7 +417,7 @@ $$
 После Stage A код может переприсвоить каждый chunk тому кубу, у которого gate открывается сильнее всего:
 
 $$
-c^\*(x) = \arg\max_c g_c(x).
+c^*(x) = \arg\max_c g_c(x).
 $$
 
 Это перезаписывает `clusters.pt`. Дальше по задумке нужно снова прогнать Stage A.
@@ -434,42 +429,32 @@ $$
 Loss:
 
 $$
-\mathcal{L}_{B}
-=
-\mathcal{L}_{\text{task}}
-+
-\lambda_{\text{bce}} \mathcal{L}_{\text{route}}
-+
-\lambda_{\text{cap}} \mathcal{L}_{\text{cap}}
-+
-\lambda_{\text{balance}} \mathcal{L}_{\text{bal}}.
+\mathcal{L}_B =
+\mathcal{L}_{\mathrm{task}} +
+\lambda_{\mathrm{bce}} \mathcal{L}_{\mathrm{route}} +
+\lambda_{\mathrm{cap}} \mathcal{L}_{\mathrm{cap}} +
+\lambda_{\mathrm{balance}} \mathcal{L}_{\mathrm{bal}}.
 $$
 
 Route supervision — это per-layer cross-entropy против подготовленных cluster labels:
 
 $$
-\mathcal{L}_{\text{route}}
-=
-\frac{1}{L}
-\sum_{l=1}^{L}
-\operatorname{CE}(\ell_l, y_l).
+\mathcal{L}_{\mathrm{route}} =
+\frac{1}{L}\sum_{l=1}^{L} \mathrm{CE}(\ell_l, y_l).
 $$
 
 Load-balance term использует средние фактические route weights:
 
 $$
-\mathcal{L}_{\text{bal}}
-=
-\sum_l \sum_c \bar{w}_{l,c}\,\log(\bar{w}_{l,c}\,|C_l| + 10^{-9}).
+\mathcal{L}_{\mathrm{bal}} =
+\sum_l \sum_c \bar{w}_{l,c} \log\!\left(\bar{w}_{l,c} |C_l| + 10^{-9}\right).
 $$
 
 Route-cap penalty:
 
 $$
-\mathcal{L}_{\text{cap}}
-=
-\sum_l
-\mathbb{E}\left[\max(0, |A_l| - \text{top\_x})^2\right].
+\mathcal{L}_{\mathrm{cap}} =
+\sum_l \mathbb{E}\!\left[\max(0, |A_l| - \mathrm{top\_x})^2\right].
 $$
 
 Stage B использует differentiable sparse routing через `route_weight_matrix(..., soft_topk=True)`.
@@ -487,13 +472,10 @@ Stage B использует differentiable sparse routing через `route_wei
 Loss в коде:
 
 $$
-\mathcal{L}_{C}
-=
-\mathcal{L}_{\text{task}}
-+
-\lambda_{\text{bce}} \mathcal{L}_{\text{route}}
-+
-0.01\,\mathcal{L}_{\text{obs}}.
+\mathcal{L}_C =
+\mathcal{L}_{\mathrm{task}} +
+\lambda_{\mathrm{bce}} \mathcal{L}_{\mathrm{route}} +
+0.01\,\mathcal{L}_{\mathrm{obs}}.
 $$
 
 Дополнительный sparsification term в описываемом тренировочном пути здесь не учитывается.
